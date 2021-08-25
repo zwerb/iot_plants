@@ -80,7 +80,7 @@ async function main() {
   console.log(`executing: ${queryString}`);
   try {
     res = await pool.query(queryString);
-    // console.log("\x1b[32m", res);
+    console.log("\x1b[32m", res);
   } catch (error) {
     console.log("\x1b[33m%s\x1b[0m", error);
   }
