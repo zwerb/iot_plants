@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const path = require("path");
-const PoolObj = require(path.join(__dirname, "../database/pool"));
-const pool = new PoolObj.Pool(PoolObj.poolCreds);
+const pool = require(path.join(__dirname, "../database/pool"));
 
 /* GET updates listing. */
 router.get("/", async function (req, res, next) {

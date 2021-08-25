@@ -25,4 +25,6 @@ const poolCreds = {
   port: dbCreds.postgres_port,
 };
 
-module.exports = { Pool, poolCreds };
+const pool = new Pool(poolCreds);
+
+module.exports = pool;

@@ -1,5 +1,4 @@
-const PoolObj = require('./pool');
-const pool = new PoolObj.Pool(PoolObj.poolCreds);
+const pool = require('./pool');
 
 async function main() {
   let queryString = "DROP TABLE IF EXISTS plants";
