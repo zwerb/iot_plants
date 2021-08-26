@@ -3,8 +3,8 @@ const router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  let users = {'user-01':'bill','user-02':'ted'}
-  res.json(users);
+  console.log(req.body.name);
+  res.json(JSON.stringify(req.header('User-Agent'))+' '+JSON.stringify(req.body));
 });
 
 router.put('/', function(req, res, next) {
