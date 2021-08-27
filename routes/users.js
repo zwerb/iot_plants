@@ -12,5 +12,10 @@ router.put('/', function(req, res, next) {
   res.json(req.body);
 });
 
+router.post('/', function(req, res, next) {
+  console.log(req);
+  res.json(req.body);
+});
+
 module.exports = router;
  
