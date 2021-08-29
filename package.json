@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "npx nodemon ./bin/www",
+    "start": "sudo npx nodemon ./bin/www",
     "operate": "sudo pm2 start ./bin/www"
   },
   "dependencies": {
