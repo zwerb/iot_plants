@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "npx pm2 start bin/www"
+    "start": "npx nodemon ./bin/www",
+    "operate": "sudo pm2 start ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
