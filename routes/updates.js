@@ -34,6 +34,8 @@ router.post("/create", async (req, res) => {
   const body = req.body;
 
   console.log(req.body.name);
+  console.log(req.rawHeaders);
+  console.log(req.body);
 
   if (
     (typeof bot === "string" || bot instanceof String) &&
