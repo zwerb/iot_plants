@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "sudo npx nodemon ./bin/www",
-    "operate": "sudo pm2 start ./bin/www"
+    "test": "sudo nodemon ./bin/www",
+    "start": "sudo pm2 start ./bin/www",
+    "initdb": "node database/init"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -14,6 +15,7 @@
     "jade": "~1.11.0",
     "js-yaml": "^4.1.0",
     "morgan": "~1.9.1",
+    "nodemon": "^2.0.12",
     "pg": "^8.7.1",
     "pm2": "^5.1.1"
   }

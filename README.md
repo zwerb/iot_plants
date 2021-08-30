@@ -14,9 +14,16 @@ This is a simple site to catch some IOT posts
 ## Internal Reference
 Utilize the server-setup and how-to-readme, for upload
 
-## Start (Uses pm2)
-npm start
+## Install Process Manager(s) (Use either pm2 or nodemon)
+npm install pm2 -g
+npm install nodemon -g
 
-npx pm2 restart www
-npx pm2 stop www
-npx pm2 delete www
+## Database init - from the main dir
+npm run dbinit
+
+## Start
+npm run start
+
+
+
+
