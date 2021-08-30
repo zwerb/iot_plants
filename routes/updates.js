@@ -29,7 +29,7 @@ router.get("/", async function (req, res, next) {
   //await pool.end();
 });
 
-router.put("/create", async (req, res) => {
+router.post("/create", async (req, res) => {
   const bot = req.header("Bot-Token");
   const body = req.body;
 
