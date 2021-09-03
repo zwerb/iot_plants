@@ -1,5 +1,29 @@
 extends layout
 
+//- block content
+//-   h1= title
+//-   p Welcome to #{title}
+
 block content
-  h1= title
-  p Welcome to #{title}
+  h1= 'Plant Updates'
+  table
+      tr
+        th= 'ID'
+        th= 'Name'
+        th= 'Temp.'
+        th= 'Hum.'
+        th= 'Moist.'
+        th= 'Light'
+        th= 'Loc.'
+        th= 'TS'
+        for update in updates
+          tr
+            td= update.id
+            td
+              a(href='/plants/'+update.name) #{update.name}
+            td= update.temperature
+            td= update.humidity
+            td= update.moisture
+            td= update.light
+            td= update.location
+            td= update.created_at

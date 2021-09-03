@@ -15,7 +15,6 @@ let plant_keys = [
 ];
 let plant_object = {};
 
-
 const postBody = {
     name: 'Plantbot-102',
     moisture: 463,
