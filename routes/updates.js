@@ -81,7 +81,7 @@ router.post("/create", async (req, res) => {
 
       try {
         const resp = await axios.post(postLocation, postBody, postHeaders);
-        console.log(resp.data);
+        console.log("Relaying Request to Web");
         res.status(201).send(resp.data);
 
       } catch (err) {
@@ -89,7 +89,8 @@ router.post("/create", async (req, res) => {
         console.error(err);
       }
     } else {
-      // ELSE: DO LOCAL
+      // ELSE: DO LOCAL, BUT NOT BOTH
+      console.log("Committing update locally");
       try {
         pgResponse = await pool.query(queryString);
         res
