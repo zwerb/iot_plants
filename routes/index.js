@@ -16,9 +16,10 @@ router.get("/", async function (req, res, next) {
 
     // res.status(200).json(pgResponse.rows);
     updates = pgResponse.rows;
+    console.log(updates);
 
     updates.forEach(row => {
-      row.created_at = moment(row.created_at.createTime).format("YYYY-MM-DD_hh:mm:ss")
+      row.created_at = moment(row.created_at).format("YYYY-MM-DD_hh:mm:ss")
     });
 
   } catch (error) {
