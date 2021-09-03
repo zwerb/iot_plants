@@ -8,7 +8,8 @@ let plant_keys = [
   "name",
   "moisture",
   "light",
-  "temp",
+  "temperature",
+  "humidity",
   "lat",
   "lng",
   "location",
@@ -47,35 +48,38 @@ router.post("/create", async (req, res) => {
       }
     });
 
-    if(plant_object.metadata) {
+    if (plant_object.metadata) {
       plant_object.metadata = "'" + JSON.stringify(plant_object.metadata) + "'";
     }
 
-    console.log(JSON.stringify(plant_object));
+    console.log("Plant object: " + JSON.stringify(plant_object));
 
     let columns_string = Object.keys(plant_object).join(", ");
-    
+
     // Wowie - need to make a fucnciton to parse the values into string, int, float, etc.
     // let values_string = Object.values(plant_object).map(val => ((typeof val === "string" || val instanceof String) && isNaN(parseFloat(val)) && isNaN(parseInt(val)) ? "'"+val+"'" : val)).join(", ");
-    let values_string = Object.values(plant_object).map(val => ((typeof val === "string" || val instanceof String) && isNaN(parseFloat(val)) && isNaN(parseInt(val)) ? "'"+val+"'" : val)).join(", ");
-
-    console.log("Object keys: "+columns_string);
-    console.log("Object vals: "+values_string);
+    let values_string = Object.values(plant_object)
+      .map((val) =>
+        (typeof val === "string" || val instanceof String) &&
+        isNaN(parseFloat(val)) &&
+        isNaN(parseInt(val))
+          ? "'" + val + "'"
+          : val
+      )
+      .join(", ");
 
     queryString = `INSERT INTO plants(${columns_string}) VALUES (${values_string}) RETURNING name, created_at;`;
     console.log(`executing: ${queryString}`);
 
     try {
       pgResponse = await pool.query(queryString);
-      res.status(201).send("Created record update: " + JSON.stringify(pgResponse.rows));
+      res
+        .status(201)
+        .send("Created record update: " + JSON.stringify(pgResponse.rows));
     } catch (error) {
       console.log("\x1b[33m%s\x1b[0m", error);
       res.status(200).send("We tried, but couldn't make an update");
     }
-
-    
-
-
   } else {
     res.status(200).send("How are you doing today?");
   }
