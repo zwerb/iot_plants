@@ -82,7 +82,8 @@ router.post("/create", async (req, res) => {
       try {
         const resp = await axios.post(postLocation, postBody, postHeaders);
         console.log(resp.data);
-        res.status(201).send(resp);
+        res.status(201).send(resp.data);
+
       } catch (err) {
         // Handle Error Here
         console.error(err);
