@@ -54,8 +54,13 @@ router.post("/create", async (req, res) => {
     console.log(JSON.stringify(plant_object));
 
     let columns_string = Object.keys(plant_object).join(", ");
+    
     // Wowie - need to make a fucnciton to parse the values into string, int, float, etc.
+    // let values_string = Object.values(plant_object).map(val => ((typeof val === "string" || val instanceof String) && isNaN(parseFloat(val)) && isNaN(parseInt(val)) ? "'"+val+"'" : val)).join(", ");
     let values_string = Object.values(plant_object).map(val => ((typeof val === "string" || val instanceof String) && isNaN(parseFloat(val)) && isNaN(parseInt(val)) ? "'"+val+"'" : val)).join(", ");
+
+    console.log("Object keys: "+columns_string);
+    console.log("Object vals: "+values_string);
 
     queryString = `INSERT INTO plants(${columns_string}) VALUES (${values_string}) RETURNING name, created_at;`;
     console.log(`executing: ${queryString}`);
