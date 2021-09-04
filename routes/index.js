@@ -19,7 +19,11 @@ router.get("/", async function (req, res, next) {
     console.log(updates);
 
     updates.forEach(row => {
-      row.created_at = moment(row.created_at).format("YYYY-MM-DD_hh:mm:ss")
+      row.temperature = (((row.temperature*9)/5)+32).toFixed(1) + " F"
+      row.moisture = (((1023-row.moisture)/1023)*100).toFixed(1) + "%"
+      row.light = (((1023-row.light)/1023)*100).toFixed(1) + "%"
+      row.humidity = String(row.humidity) + "%"
+      row.created_at = moment(row.created_at).add(5, 'hours').format("YYYY-MM-DD--hh:mm:ss")
     });
 
   } catch (error) {
