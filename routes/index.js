@@ -23,7 +23,7 @@ router.get("/", async function (req, res, next) {
       row.moisture = (((1023-row.moisture)/1023)*100).toFixed(1) + "%"
       row.light = (((1023-row.light)/1023)*100).toFixed(1) + "%"
       row.humidity = String(row.humidity) + "%"
-      row.created_at = moment(row.created_at).add(5, 'hours').format("YYYY-MM-DD--hh:mm:ss")
+      row.created_at = moment(row.created_at).subtract(7, 'hours').format("YYYY-MM-DD--hh:mm:ss")
     });
 
   } catch (error) {
@@ -32,7 +32,7 @@ router.get("/", async function (req, res, next) {
   //await pool.end();
   // });
 
-  res.render("index", { title: "Plant Life", updates: updates });
+  res.render("index", { title: "My Plant Buddy", updates: updates });
 });
 
 module.exports = router;
