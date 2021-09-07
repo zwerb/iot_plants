@@ -23,7 +23,7 @@ router.get("/", async function (req, res, next) {
       row.moisture = (((1023-row.moisture)/1023)*100).toFixed(1) + "%"
       row.light = (((1023-row.light)/1023)*100).toFixed(1) + "%"
       row.humidity = String(row.humidity) + "%"
-      row.created_at = moment(row.created_at).subtract(7, 'hours').format("YYYY-MM-DD--hh:mm:ss")
+      row.created_at = moment(row.created_at).subtract(7, 'hours').format("YYYY-MM-DD_HH:mm:ss")
     });
 
   } catch (error) {
